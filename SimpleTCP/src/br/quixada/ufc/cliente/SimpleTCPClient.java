@@ -1,4 +1,4 @@
-package br.quixada.ufc;
+package br.quixada.ufc.cliente;
 import java.io.*;
 import java.net.*;
 
