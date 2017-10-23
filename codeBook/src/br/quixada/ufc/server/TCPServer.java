@@ -5,9 +5,11 @@ public class TCPServer {
 	public static void main (String args[]) {
 		try{
 			int serverPort = 1222; // the server port
+			@SuppressWarnings("resource")
 			ServerSocket listenSocket = new ServerSocket(serverPort);
 			while(true) {
 				Socket clientSocket = listenSocket.accept();
+				@SuppressWarnings("unused")
 				Connection c = new Connection(clientSocket);
 			}
 		} catch(IOException e) {System.out.println("Listen socket:"+e.getMessage());}
