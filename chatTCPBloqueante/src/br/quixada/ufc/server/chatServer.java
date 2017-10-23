@@ -3,12 +3,14 @@ import java.net.*;
 import java.util.Scanner;
 import java.io.*;
 public class chatServer {
+	@SuppressWarnings("resource")
 	public static void main (String args[]) {
 		try{
 			int serverPort = 1222; // the server port
 			ServerSocket listenSocket = new ServerSocket(serverPort);
 			while(true) {
 				Socket clientSocket = listenSocket.accept();
+				@SuppressWarnings("unused")
 				Connection c = new Connection(clientSocket);
 			}
 		} catch(IOException e) {System.out.println("Listen socket:"+e.getMessage());}
@@ -30,7 +32,8 @@ class Connection extends Thread {
 		try {			                 // an echo server
 
 			String data = in.readUTF();	                  // read a line of data from the stream
-			System.out.print(clientSocket.getLocalPort() + " #" + data);
+			System.out.println(clientSocket.getLocalPort() + " #" + data);
+			@SuppressWarnings("resource")
 			Scanner leituraTeclado = new Scanner(System.in);
 			System.out.print("# ");
 			String msg;
